@@ -16,4 +16,7 @@ public interface TaskRepository extends MongoRepository<Task, String> {
 
   @Query("{ taskId: ?0, userId: ?1 }")
   Optional<Task> findByIdAndUserId(String taskId, String getId);
+
+  @Query(value = "{ taskId: ?0, userId: ?1 }", exists = true)
+  boolean existsByIdAndUserId(String taskId, String id);
 }

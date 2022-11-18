@@ -54,4 +54,10 @@ public class TaskController {
     var task = taskService.update(taskId, updateTaskRequest, user);
     return ResponseEntity.ok(modelMapper.map(task, TaskDto.class));
   }
+
+  @DeleteMapping("/{taskId}")
+  public void deleteById(@PathVariable String taskId, @CurrentUser User user)
+      throws TaskNotFoundException {
+    taskService.deleteById(taskId, user);
+  }
 }

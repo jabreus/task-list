@@ -40,4 +40,10 @@ public class TaskService {
         .findByIdAndUserId(taskId, user.getId())
         .orElseThrow(() -> new TaskNotFoundException(taskId));
   }
+
+  public void deleteById(@NonNull String taskId, @NonNull User user) throws TaskNotFoundException {
+    if (!taskRepository.existsByIdAndUserId(taskId, user.getId()))
+      throw new TaskNotFoundException(taskId);
+    taskRepository.deleteById(taskId);
+  }
 }
