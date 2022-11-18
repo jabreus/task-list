@@ -1,5 +1,7 @@
 package com.demos.tasklist.tasks;
 
+import com.demos.tasklist.tasks.dtos.CreateTaskRequest;
+import com.demos.tasklist.tasks.dtos.UpdateTaskRequest;
 import com.demos.tasklist.tasks.exceptions.TaskNotFoundException;
 import com.demos.tasklist.users.User;
 import lombok.NonNull;
@@ -28,7 +30,7 @@ public class TaskService {
   }
 
   public Task update(
-      @NonNull String taskId, @NonNull UpdateTaskRequest updateTaskRequest, @NonNull User user)
+    @NonNull String taskId, @NonNull UpdateTaskRequest updateTaskRequest, @NonNull User user)
       throws TaskNotFoundException {
     var task = getById(taskId, user);
     task.setContent(updateTaskRequest.getContent());

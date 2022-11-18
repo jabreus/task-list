@@ -1,4 +1,4 @@
-package com.demos.tasklist.tasks;
+package com.demos.tasklist.tasks.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

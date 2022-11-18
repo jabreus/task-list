@@ -1,5 +1,8 @@
 package com.demos.tasklist.tasks;
 
+import com.demos.tasklist.tasks.dtos.CreateTaskRequest;
+import com.demos.tasklist.tasks.dtos.TaskDto;
+import com.demos.tasklist.tasks.dtos.UpdateTaskRequest;
 import com.demos.tasklist.tasks.exceptions.TaskNotFoundException;
 import com.demos.tasklist.users.User;
 import com.demos.tasklist.utils.CurrentUser;
@@ -40,7 +43,7 @@ public class TaskController {
 
   @PostMapping
   public ResponseEntity<TaskDto> create(
-      @Valid @RequestBody CreateTaskRequest createTaskRequest, @CurrentUser User user) {
+    @Valid @RequestBody CreateTaskRequest createTaskRequest, @CurrentUser User user) {
     var task = taskService.create(createTaskRequest, user);
     return ResponseEntity.ok(modelMapper.map(task, TaskDto.class));
   }
