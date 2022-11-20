@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +19,7 @@ public class TaskService {
 
   private final ModelMapper modelMapper;
 
-  public Page<Task> getAllByUsers(@NonNull String userId, @NonNull PageRequest pageable) {
+  public Page<Task> getAllByUsers(@NonNull String userId, @NonNull Pageable pageable) {
     return taskRepository.findAllByUserId(userId, pageable);
   }
 
@@ -30,7 +30,7 @@ public class TaskService {
   }
 
   public Task update(
-    @NonNull String taskId, @NonNull UpdateTaskRequest updateTaskRequest, @NonNull User user)
+      @NonNull String taskId, @NonNull UpdateTaskRequest updateTaskRequest, @NonNull User user)
       throws TaskNotFoundException {
     var task = getById(taskId, user);
     task.setContent(updateTaskRequest.getContent());
