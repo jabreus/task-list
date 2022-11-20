@@ -1,6 +1,7 @@
 package com.demos.tasklist.utils;
 
 import com.demos.tasklist.tasks.exceptions.TaskNotFoundException;
+import com.demos.tasklist.users.exceptions.UsernameInUseException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,13 @@ public class RestResponseStatusExceptionHandler extends ResponseEntityExceptionH
     var bodyOfResponse = e.getMessage();
     return handleExceptionInternal(
         e, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+  }
+
+  @ExceptionHandler(value = {UsernameInUseException.class})
+  protected ResponseEntity<Object> conflict(Exception e, WebRequest request) {
+    var bodyOfResponse = e.getMessage();
+    return handleExceptionInternal(
+        e, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
   }
 
   @Override
