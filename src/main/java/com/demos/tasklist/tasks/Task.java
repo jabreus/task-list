@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("tasks")
@@ -17,5 +16,5 @@ public class Task {
 
   @Id private String id;
   private String content;
-  @DBRef private String userId;
+  private String userId;
 }
