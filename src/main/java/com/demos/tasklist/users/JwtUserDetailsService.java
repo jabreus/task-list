@@ -39,9 +39,11 @@ public class JwtUserDetailsService implements UserDetailsService {
     return userRepository.existsByUsername(username);
   }
 
-  public void register(SignUpRequest signupRequest) {
-    userRepository.save(
+  public com.demos.tasklist.users.User register(SignUpRequest signupRequest) {
+    return userRepository.save(
         new com.demos.tasklist.users.User(
-            null, signupRequest.getUsername(), passwordEncoder.encode(signupRequest.getPassword())));
+            null,
+            signupRequest.getUsername(),
+            passwordEncoder.encode(signupRequest.getPassword())));
   }
 }

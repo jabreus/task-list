@@ -43,7 +43,7 @@ public class TaskController {
 
   @PostMapping
   public ResponseEntity<TaskDto> create(
-    @Valid @RequestBody CreateTaskRequest createTaskRequest, @CurrentUser User user) {
+      @Valid @RequestBody CreateTaskRequest createTaskRequest, @CurrentUser User user) {
     var task = taskService.create(createTaskRequest, user);
     return ResponseEntity.ok(modelMapper.map(task, TaskDto.class));
   }
