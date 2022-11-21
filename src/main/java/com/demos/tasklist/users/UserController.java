@@ -16,7 +16,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/v1/users")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 public class UserController {
 
   private final JwtUserDetailsService userDetailsService;
