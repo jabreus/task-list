@@ -18,6 +18,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/v1/tasks")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 public class TaskController {
 
   private final TaskService taskService;
