@@ -38,6 +38,8 @@ public class SecurityConfig {
       throws Exception {
     http.csrf()
         .disable()
+        .cors()
+        .and()
         .exceptionHandling()
         .authenticationEntryPoint(authEntryPointJwt)
         .and()
