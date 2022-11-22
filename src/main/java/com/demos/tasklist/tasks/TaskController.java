@@ -27,7 +27,7 @@ public class TaskController {
   @GetMapping
   public Page<TaskDto> getAll(
       @RequestParam(required = false, defaultValue = "0") Integer page,
-      @RequestParam(required = false, defaultValue = "10") Integer size,
+      @RequestParam(required = false, defaultValue = "30") Integer size,
       @CurrentUser User user) {
     var pageable = PageRequest.of(page, size);
     var taskPage = taskService.getAllByUsers(user.getId(), pageable);
